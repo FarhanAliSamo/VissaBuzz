@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\admin\PermissionController;
 use App\Http\Controllers\admin\RoleController;
+use App\Http\Controllers\admin\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,10 +19,7 @@ use App\Http\Controllers\admin\RoleController;
 Route::get('/', function () {
     return view('admin.dashboard.dashboard');
 });
-Route::get('/user', function () {
-    return view('admin.user.index');
-})->name('user.index');
-
+ 
 
 // <--------- Admin Routes ---------->
 
@@ -30,3 +28,6 @@ Route::get('permissions/{id}/delete',[PermissionController::class,'destroy']);
 
 Route::resource('roles',RoleController::class);
 Route::get('roles/{id}/delete',[RoleController::class,'destroy']);
+
+Route::resource('users',UserController::class);
+Route::get('users/{id}/delete',[UserController::class,'destroy']);

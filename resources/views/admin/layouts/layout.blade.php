@@ -359,7 +359,7 @@
                         </ul>
                     </li>
                     
-                    <li><a href="{{route('user.index')}}" ><i class="fa-solid fa-user"></i><span class="nav-text">Users</span></a></li>
+                    <li><a href="{{route('users.index')}}" ><i class="fa-solid fa-user"></i><span class="nav-text">Users</span></a></li>
            
                     <li>
                         <a class="has-arrow " href="javascript:void()" aria-expanded="false">
