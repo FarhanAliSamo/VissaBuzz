@@ -7,12 +7,11 @@
         <div class="row page-titles mb-4 py-3">
 
             <div class="d-flex align-items-center flex-wrap">
-                <h3 class="me-auto my-0">Permissions</h3>
+                <h3 class="me-auto my-0">Industries</h3>
                 <div>
 
                     <a href="javascript:void(0);" data-bs-toggle="modal"
-                        data-bs-target=".create-modal-lg" class="btn btn-primary me-3"><i class="fas fa-plus me-2"></i>Add
-                        Permission</a>
+                        data-bs-target=".create-modal-lg" class="btn btn-primary me-3"><i class="fas fa-plus me-2"></i>Add Industry</a>
                 </div>
             </div>
         </div>
@@ -54,7 +53,7 @@
             <div class="modal-content">
 
                 <div class="modal-header">
-                    <h5 class="modal-title">Create Permission</h5>
+                    <h5 class="modal-title">Create Industry</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal">
                     </button>
                 </div>
@@ -65,7 +64,7 @@
                         <div class="row">
 
                             <div class="col-12 mb-4">
-                                <label class="form-label required">Permission Name</label>
+                                <label class="form-label required">Industry Name</label>
                                 <input type="text" name="name" class="form-control solid" placeholder="Name"
                                     aria-label="name" required>
                             </div>
@@ -100,7 +99,7 @@
                         <div class="row">
 
                             <div class="col-12 mb-4">
-                                <label class="form-label required">Permission Name</label>
+                                <label class="form-label required">Industry Name</label>
                                 <input type="text" name="name" class="form-control solid" placeholder="Name"
                                     aria-label="name" id="name" required>
 
@@ -131,7 +130,7 @@
      table = $('#example3').DataTable({
         processing: true,
         serverSide: true,
-        ajax: "{{ url('permissions/data') }}",  // URL for the DataTable data
+        ajax: "{{ url('industries/data') }}",  // URL for the DataTable data
         columns: [
             { data: 'id' },
             { data: 'name' },
@@ -173,7 +172,7 @@
                 let formData = $(this).serialize(); // Serialize form data
 
                 $.ajax({
-                    url: "{{ url('permissions') }}", // Your route URL
+                    url: "{{ url('industries') }}", // Your route URL
                     type: "POST",
                     data: formData,
                     success: function(response) {
@@ -227,7 +226,7 @@
                 let updateId = $('#updateId').val()
 
                 $.ajax({
-                    url: `{{ url('permissions/${updateId}') }}`, // Your route URL
+                    url: `{{ url('industries/${updateId}') }}`, // Your route URL
                     type: "POST",
                     data: formData,
                     success: function(response) {
@@ -286,7 +285,7 @@
 
 
             $.ajax({
-                url: `{{ url('permissions/${id}/delete') }}`, // Your route URL
+                url: `{{ url('industries/${id}/delete') }}`, // Your route URL
                 type: "GET",
 
                 success: function(response) {
@@ -332,7 +331,7 @@
         function edit(id) {
 
             $.ajax({
-                url: `{{ url('permissions/${id}/edit') }}`, // Your route URL
+                url: `{{ url('industries/${id}/edit') }}`, // Your route URL
                 type: "GET",
 
                 success: function({data}) {

@@ -350,12 +350,12 @@
                             <span class="nav-text">Jobs</span>
                         </a>
                         <ul aria-expanded="false">
-                            <li><a href="job-list.html">Job Lists</a></li>
-                            <li><a href="job-view.html">Job View</a></li>
-                            <li><a href="job-application.html">Job Application</a></li>
-                            <li><a href="apply-job.html">Apply Job</a></li>
-                            <li><a href="new-job.html">New Job</a></li>
-                            <li><a href="user-profile.html">User Profile</a></li>
+                            <li><a href="{{url('jobs')}}">Jobs</a></li>
+                            <li><a href="{{url('industries')}}">Industries</a></li>
+                            <li><a href="{{url('job_types')}}">Job Types</a></li>
+                            <li><a href="{{url('job_seniorities')}}">Seniorities</a></li>
+                            <li><a href="{{url('job_experiences')}}">Experiences</a></li>
+                             
                         </ul>
                     </li>
                     

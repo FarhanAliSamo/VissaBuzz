@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\company;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Company;
@@ -26,7 +27,6 @@ class CompanyAuthController extends Controller
             'email' => 'The provided credentials do not match our records.',
         ]);
     }
-
     public function logout(Request $request)
     {
         Auth::guard('company')->logout();

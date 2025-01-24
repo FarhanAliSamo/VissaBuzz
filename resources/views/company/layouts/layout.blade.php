@@ -330,9 +330,9 @@
                     </div>
                 </div>
                 <ul class="metismenu" id="menu">
-                    <li><a class="has-arrow " href="javascript:void()" aria-expanded="false">
-                            <i class="flaticon-025-dashboard"></i>
-                            <span class="nav-text">Dashboard</span>
+                    {{-- <li><a class="has-arrow " href="javascript:void()" aria-expanded="false">
+                        <i class="flaticon-025-dashboard"></i>
+                        <span class="nav-text">Dashboard</span>
                         </a>
                         <ul aria-expanded="false">
                             <li><a href="index-2.html">Dashboard Light</a></li>
@@ -343,14 +343,15 @@
                             <li><a href="statistics-page.html">Statistics</a></li>
                             <li><a href="companies.html">Companies</a></li>
                         </ul>
-
-                    </li>
+                        
+                    </li> --}}
+                    <li><a href="{{route('company.dashboard')}}" ><i class="flaticon-025-dashboard"></i><span class="nav-text">Dashboard</span></a></li>
                     <li><a class="has-arrow " href="javascript:void()" aria-expanded="false">
-                            <i class="flaticon-093-waving"></i>
+                        <i class="flaticon-093-waving"></i>
                             <span class="nav-text">Jobs</span>
                         </a>
                         <ul aria-expanded="false">
-                            <li><a href="job-list.html">Job Lists</a></li>
+                            <li><a href="{{route('company.jobs.index')}}">Job Lists</a></li>
                             <li><a href="job-view.html">Job View</a></li>
                             <li><a href="job-application.html">Job Application</a></li>
                             <li><a href="apply-job.html">Apply Job</a></li>
@@ -359,7 +360,6 @@
                         </ul>
                     </li>
                     
-                    <li><a href="{{route('users.index')}}" ><i class="fa-solid fa-user"></i><span class="nav-text">Users</span></a></li>
            
                     <li>
                         <a class="has-arrow " href="javascript:void()" aria-expanded="false">

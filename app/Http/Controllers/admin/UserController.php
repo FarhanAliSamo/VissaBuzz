@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers\admin;
 
- 
- 
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -18,13 +16,11 @@ class UserController extends Controller
     public function index()
     {
         $roles = Role::pluck('name','name')->all();
- 
         return view('admin.role-permission.user.index',compact('roles'));
     }
 
     public function show()
     {
-        
         $data = User::query(); // Use query for DataTable integration
 
         return DataTables::of($data)
