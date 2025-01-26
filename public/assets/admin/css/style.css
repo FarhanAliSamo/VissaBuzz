@@ -70,19 +70,19 @@
 @import url("./../icons/bootstrap-icons/font/bootstrap-icons.css");
 @import url(./../vendor/metismenu/css/metisMenu.min.css);
 :root {
-  --primary: #F93A0B;
+  --primary: #478bcf;
   --secondary: #145650;
-  --primary-hover: #cc2c05;
+  --primary-hover: #2a6096;
   --primary-dark: #681703;
-  --rgba-primary-1: rgba(249, 58, 11, 0.1);
-  --rgba-primary-2: rgba(249, 58, 11, 0.2);
-  --rgba-primary-3: rgba(249, 58, 11, 0.3);
-  --rgba-primary-4: rgba(249, 58, 11, 0.4);
-  --rgba-primary-5: rgba(249, 58, 11, 0.5);
-  --rgba-primary-6: rgba(249, 58, 11, 0.6);
-  --rgba-primary-7: rgba(249, 58, 11, 0.7);
-  --rgba-primary-8: rgba(249, 58, 11, 0.8);
-  --rgba-primary-9: rgba(249, 58, 11, 0.9);
+  --rgba-primary-1: rgba(71, 139, 207, 0.1);
+  --rgba-primary-2: rgba(71, 139, 207, 0.2);
+  --rgba-primary-3: rgba(71, 139, 207, 0.3);
+  --rgba-primary-4: rgba(71, 139, 207, 0.4);
+  --rgba-primary-5: rgba(71, 139, 207, 0.5);
+  --rgba-primary-6: rgba(71, 139, 207, 0.6);
+  --rgba-primary-7: rgba(71, 139, 207, 0.7);
+  --rgba-primary-8: rgba(71, 139, 207, 0.8);
+  --rgba-primary-9: rgba(71, 139, 207, 0.9);
   --font-family-base: Roboto, sans-serif;
   --font-family-title: Roboto, sans-serif;
   --title: #000;
@@ -24745,4 +24745,11 @@ div#mCSB_1 {
 
 .custom-checkbox label, .custom-checkbox input{
   cursor: pointer !important;
+}
+
+
+.logo_header {
+    width: 90%;
+    margin: 0px auto;
+    padding: 10px;
 }
