@@ -345,18 +345,21 @@
                         </ul>
 
                     </li>
-                    <li><a class="has-arrow " href="javascript:void()" aria-expanded="false">
+                    <li>
+                        
+                        <a class="has-arrow " href="javascript:void()" aria-expanded="false">
                             <i class="flaticon-093-waving"></i>
                             <span class="nav-text">Jobs</span>
                         </a>
+                        
                         <ul aria-expanded="false">
                             <li><a href="{{url('jobs')}}">Jobs</a></li>
                             <li><a href="{{url('industries')}}">Industries</a></li>
                             <li><a href="{{url('job_types')}}">Job Types</a></li>
                             <li><a href="{{url('job_seniorities')}}">Seniorities</a></li>
                             <li><a href="{{url('job_experiences')}}">Experiences</a></li>
-                             
                         </ul>
+
                     </li>
                     
                     <li><a href="{{route('users.index')}}" ><i class="fa-solid fa-user"></i><span class="nav-text">Users</span></a></li>

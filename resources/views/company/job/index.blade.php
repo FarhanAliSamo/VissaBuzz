@@ -28,8 +28,13 @@
                                 <thead>
                                     <tr>
                                         <th>#</th>
-                                        <th>Name</th>
-                                        <th>Roles</th>
+                                        <th>Job Title</th>
+                                        <th>Seniority</th>
+                                        <th>Industry</th>
+                                        <th>Job Type</th>
+                                        <th>Experience</th>
+                                        <th>Country</th>
+                                        <th>City</th>
                                         <th>Create Date</th>
                                         <th>Update Date</th>
                                         <th>Action</th>
@@ -50,68 +55,6 @@
 
  
     {{-- //  Add Modal ----- --}}
-
-    {{-- <div class="modal fade create-modal-lg" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-dialog ">
-            <div class="modal-content">
-
-                <div class="modal-header">
-                    <h5 class="modal-title">Create User</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal">
-                    </button>
-                </div>
-
-                <form id="createForm">
-                    @csrf
-                    <div class="modal-body">
-                        <div class="row gy-3">
-
-                            <div class=" col-12">
-                                <label class="form-label required">Name</label>
-                                <input type="text" name="name" class="form-control solid" name="description" placeholder="Name"
-                                    aria-label="name" required>
-                            </div>
-                            
-
-                            <div class=" col-12">
-                                <label class="form-label required">Email</label>
-                                <input type="email" name="email" class="form-control solid" name="description" placeholder="Email"
-                                    aria-label="email" required>
-                            </div>
-
-                            <div class="col-12">
-                                <label class="form-label required">Password</label>
-                                <div class="input-group">
-                                    <input type="password" name="password"  class="form-control solid password-field" placeholder="Password" 
-                                           aria-label="password" required>
-                                    <button type="button" class="btn btn-primary toggle-password" >
-                                        <i class="fas fa-eye"></i> <!-- Font Awesome Icon -->
-                                    </button>
-                                </div>
-                            </div>
-                           
-                            <div class=" col-12">
-                                <label class="form-label required">Roles</label>
-                                <select class="default-select form-control wide" name="roles[]"  multiple>
-                                    @foreach ($roles as $role)
-                                        <option value="{{$role}}">{{$role}}</option>      
-                                    @endforeach
-                                </select>
-                            </div>
- 
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-danger light" data-bs-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary">Create</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div> --}}
-
-
-    {{-- //  Add Modal ----- --}}
     <div class="modal fade create-modal-lg" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
@@ -125,82 +68,84 @@
                     @csrf
                     <div class="modal-body">
                         <div class="row">
+                            
                             <div class="col-xl-6  col-md-6 mb-4">
                                 <label class="form-label required">Job Title</label>
-                                <input type="text" class="form-control solid" name="description" placeholder="Name"
-                                    aria-label="name" name="job_title">
+                                <input type="text" class="form-control solid"   placeholder="Title"
+                                    aria-label="name" name="job_title" required>
                             </div>
 
                             <div class="col-xl-6  col-md-6 mb-4">
                                 <label class="form-label required">Seniority</label>
-                                <select class="default-select wide form-control solid" name="seniority">
+                                <select class="default-select wide form-control solid" name="seniority_id" required>
                                     <option selected>Choose...</option>
-                                    <option>Experienced Professional</option>
-                                    <option>Supervisor / Manager</option>
-                                    <option>Top Management / Director</option>
-                                    <option>Student/ Fresh graduate</option>
+                                    @foreach ($seniorities as $seniority)
+                                        <option value="{{$seniority->id}}">{{$seniority->name}}</option>
+                                    @endforeach
                                 </select>
                             </div>
 
                             <div class="col-xl-6  col-md-6 mb-4">
                                 <label class="form-label required">Industry</label>
-                                <select class="default-select wide form-control solid" name="industry">
+                                <select class="default-select wide form-control solid" name="industry_id" required>
                                     <option selected>Choose...</option>
-                                    <option>Hospitality</option>
-                                    <option>Construction</option>
-                                    <option>Systems Analyst</option>
+
+                                    @foreach ($industries as $industry)
+                                        <option value="{{$industry->id}}">{{$industry->name}}</option>
+                                    @endforeach
+                                     
                                 </select>
                             </div>
 
                             <div class="col-xl-6  col-md-6 mb-4">
                                 <label class="form-label required">Job Type</label>
-                                <select class="default-select wide form-control solid" name="job_type">
+                                <select class="default-select wide form-control solid" name="job_type_id" required>
                                     <option selected>Choose...</option>
-                                    <option>Part-Time</option>
-                                    <option>Full-Time</option>
-                                    <option>Internship</option>
-                                    <option>Contract</option>
-                                    <option>Temporary</option>
+                                    @foreach ($job_types as $job_type)
+                                        <option value="{{$job_type->id}}">{{$job_type->name}}</option>
+                                    @endforeach
+ 
                                 </select>
                             </div>
                    
                             <div class="col-xl-6  col-md-6 mb-4">
                                 <label class="form-label required">Select Experience:</label>
-                                <select class="default-select wide form-control solid" name="experience">
+                                <select class="default-select wide form-control solid" name="experience_id" required>
                                     <option selected>Choose...</option>
-                                    <option>6 Months</option>
-                                    <option>1 Year</option>
-                                    <option>1.5 Year</option>
-                                    <option>2 Year</option>
-                                    <option>2.5 Year</option>
-                                    <option>3 Year</option>
+                                    
+                                    @foreach ($job_experiences as $job_experience)
+                                        <option value="{{$job_experience->id}}">{{$job_experience->name}}</option>
+                                    @endforeach
+                                   
+
                                 </select>
                             </div>
                             
                             <div class="col-xl-6  col-md-6 mb-4">
                                 <label class="form-label required">Select Gender:</label>
-                                <select class="default-select wide form-control solid" name="gender">
+                                <select class="default-select wide form-control solid" name="gender" required>
                                     <option selected>Choose...</option>
-                                    <option>Male</option>
-                                    <option>Female</option>
-                                    <option>Any</option>
+                                    <option value="male">Male</option>
+                                    <option value="female">Female</option>
+                                    <option value="any">Any</option>
+
                                 </select>
                             </div>
 
                             <div class="col-xl-6  col-md-6 mb-4">
                                 <label class="form-label required">Salary From</label>
-                                <input type="text" class="form-control solid" name="salary_from" placeholder="$"
-                                    aria-label="name">
+                                <input type="number" class="form-control solid" name="salary_from" placeholder="10,000"
+                                    aria-label="name" required>
                             </div>
                             <div class="col-xl-6  col-md-6 mb-4">
                                 <label class="form-label required">Salary To</label>
-                                <input type="text"  class="form-control solid" name="salary_to" placeholder="$"
-                                    aria-label="name">
+                                <input type="number"  class="form-control solid" name="salary_to" placeholder="20,000"
+                                    aria-label="name" required>
                             </div>
 
                             <div class="col-xl-6  col-md-6 mb-4">
                                 <label class="form-label required">Select Currency:</label>
-                                <select name="currency" class="default-select wide form-control solid">
+                                <select name="currency" class="default-select wide form-control solid required" required>
                                     <option selected>PKR</option>
                                     <option>EUR</option>
                                     <option>INR</option>
@@ -210,53 +155,52 @@
 
                             <div class="col-xl-6  col-md-6 mb-4">
                                 <label class="form-label required">Location:</label>
-                                <select name="location" class="default-select wide form-control solid" >
+                                <select name="location" class="default-select wide form-control solid required" required >
                                     <option  selected>Choose...</option>
-                                    <option>Onsite</option>
-                                    <option>Remote</option>
-                                    <option>Hybrid</option>
+                                    <option value="onsite">Onsite</option>
+                                    <option value="remote">Remote</option>
+                                    <option value="hybrid">Hybrid</option>
                                 </select>
                             </div>                           
 
                             <div class="col-xl-6  col-md-6 mb-4">
                                 <label class="form-label required">Country</label>
-                                <select name="country" class="default-select wide form-control solid">
+ 
+                                <select name="country_id" class="default-select wide form-control solid required" required onchange="fetchCities(this.value)" >
                                     <option selected>Choose...</option>
-                                    <option>Pakistan</option>
+                                    @foreach ($countries as $country)
+                                        <option value="{{$country->id}}">{{$country->name}}</option>
+                                    @endforeach
                                 </select>
                             </div>
-                           
+
                             <div class="col-xl-6  col-md-6 mb-4">
                                 <label class="form-label required">Select City:</label>
-                                <select name="city" class="default-select wide form-control solid">
+                                <select name="city_id" id="city" class="default-select wide form-control solid required" required>
                                     <option selected>Choose...</option>
-                                    <option>Karachi</option>
-                                    <option>Dadu</option>
-                                    <option>Hyderabad</option>
                                 </select>
                             </div>
                             
  
- 
                             <div class="col-xl-12 mb-4">
                                 <label class="form-label required">Job Description:</label>
-                                <textarea class="form-control solid" name="job_description" rows="5" aria-label="With textarea"></textarea>
+                                <textarea class="form-control solid" name="job_description" required rows="5" aria-label="With textarea"></textarea>
                             </div>
  
                             <div class="col-xl-12 mb-4">
                                 <label class="form-label required">Candidate Profile:</label>
-                                <textarea class="form-control solid" name="candidate_profile" rows="5" aria-label="With textarea"></textarea>
+                                <textarea class="form-control solid" name="candidate_profile" rows="5" aria-label="With textarea" required></textarea>
                             </div>
 
 
                         </div>
                     </div>
+                    
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger light" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Create Job</button>
+                    </div>
                 </form>
-
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-danger light" data-bs-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary">Create Job</button>
-                </div>
             </div>
         </div>
     </div>
@@ -340,27 +284,19 @@
             table = $('#example3').DataTable({
                 processing: true,
                 serverSide: true,
-                ajax: "{{ url('users/data') }}", // URL for the DataTable data
-                columns: [{
-                        data: 'id'
-                    },
-                    {
-                        data: 'name'
-                    },
-                    {
-                        data: 'roles'
-                    },
-                    {
-                        data: 'created_at'
-                    },
-                    {
-                        data: 'updated_at'
-                    },
-                    {
-                        data: 'actions',
-                        orderable: false,
-                        searchable: false
-                    }
+                ajax: "{{ route('company.jobs.data') }}", // URL for the DataTable data
+                columns: [
+                    { data: 'id' },
+                    { data: 'job_title' },
+                    { data: 'seniority.name' },
+                    { data: 'industry.name' },
+                    { data: 'job_type.name' }, // Ensure this column is included
+                    { data: 'experience.name' },
+                    { data: 'country.name' },
+                    { data: 'city.name' },
+                    { data: 'created_at' },
+                    { data: 'updated_at' },
+                    { data: 'actions', orderable: false, searchable: false }
                 ],
                 order: [
                     [0, 'desc']
@@ -371,9 +307,8 @@
                         previous: '<i class="fa fa-angle-left"></i>'
                     }
                 },
-                // dom: '<"top"lf>rt<"bottom"ip><"clear">',
                 lengthMenu: [
-                    [10, 25, 50, 100, 200, ],
+                    [10, 25, 50, 100, 200],
                     [10, 25, 50, 100, 200]
                 ],
                 pageLength: 10
@@ -397,7 +332,7 @@
                 let formData = $(this).serialize(); // Serialize form data
 
                 $.ajax({
-                    url: "{{ url('users') }}", // Your route URL
+                    url: "{{ url('company/jobs') }}", // Your route URL
                     type: "POST",
                     data: formData,
                     success: function(response) {
@@ -451,7 +386,7 @@
                 let updateId = $('#updateId').val()
 
                 $.ajax({
-                    url: `{{ url('users/${updateId}') }}`, // Your route URL
+                    url: `{{ url('company/jobs/${updateId}') }}`, // Your route URL
                     type: "POST",
                     data: formData,
                     success: function(response) {
@@ -510,7 +445,7 @@
 
 
             $.ajax({
-                url: `{{ url('users/${id}/delete') }}`, // Your route URL
+                url: `{{ url('company/jobs/${id}/delete') }}`, // Your route URL
                 type: "GET",
 
                 success: function(response) {
@@ -558,7 +493,7 @@
             $('#rolesId').html('');
 
             $.ajax({
-                url: `{{ url('users/${id}/edit') }}`, // Your route URL
+                url: `{{ url('company/jobs/${id}/edit') }}`, // Your route URL
                 type: "GET",
 
                 success: function({
@@ -635,5 +570,23 @@ toggleButtons.forEach(button => {
     });
 });
 
+    function fetchCities(countryId) {
+        const citySelect = $('#city');
+        
+        $.ajax({
+            url: `/company/get-cities/${countryId}`,
+            type: 'GET',
+            success: function(response) {
+                response.data.forEach(city => {
+                    citySelect.empty().append('<option selected>Choose...</option>'); // Empty the dropdown first
+                    citySelect.append(`<option value="${city.id}">${city.name}</option>`);
+                });
+                citySelect.selectpicker('refresh'); // Refresh the dropdown
+            },
+            error: function(xhr) {
+                console.error('Error fetching cities:', xhr);
+            }
+        });
+    }
     </script>
 @endsection

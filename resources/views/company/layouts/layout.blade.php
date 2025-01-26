@@ -16,7 +16,7 @@
 <link href="/assets/adminvendor/sweetalert2/dist/sweetalert2.min.css" rel="stylesheet" type="text/css"/>
             
 
-
+<link href="/assets/admin/vendor/select2/css/select2.min.css" rel="stylesheet" type="text/css"/>
 <link href="/assets/admin/vendor/bootstrap-datepicker-master/css/bootstrap-datepicker.min.css" rel="stylesheet"
     type="text/css" />
 <link href="/assets/admin/vendor/owl-carousel/owl.carousel.css" rel="stylesheet" type="text/css" />
@@ -371,7 +371,7 @@
                             <li><a href="{{url('permissions')}}">Permissions</a></li>
                         </ul>
                     </li>
-
+ 
                    
                 </ul>
                 
@@ -573,6 +573,8 @@
     <script src="/assets/admin/vendor/datatables/js/jquery.dataTables.min.js" type="text/javascript"></script>
     <script src="/assets/admin/vendor/datatables/responsive/responsive.js" type="text/javascript"></script>
     <script src="/assets/admin/js/plugins-init/datatables.init.js" type="text/javascript"></script>
+    <script src="/assets/admin/vendor/select2/js/select2.full.min.js" type="text/javascript"></script>
+    <script src="/assets/admin/js/plugins-init/select2-init.js" type="text/javascript"></script>
     <script src="/assets/admin/js/custom.min.js" type="text/javascript"></script>
     <script src="/assets/admin/js/dlabnav-init.js" type="text/javascript"></script>
     <script src="/assets/admin/js/demo.js" type="text/javascript"></script>

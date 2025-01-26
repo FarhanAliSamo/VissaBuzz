@@ -69,9 +69,10 @@ Route::middleware(['company'])->prefix('company')->name('company.')->group(funct
         return view('company.dashboard.dashboard');
     })->name('dashboard');
     
-    Route::resource('jobs',JobController::class)->names('jobs');
-
-    Route::get('users/{id}/delete',[UserController::class,'destroy']);
+    Route::get('jobs/getJobsData', [JobController::class, 'getJobsData'])->name('jobs.data');
+    Route::resource('jobs', JobController::class)->names('jobs');
+    Route::get('jobs/{id}/delete',[UserController::class,'destroy']);
+    Route::get('get-cities/{id}',[JobController::class,'get_cities']);
     
       
 });
