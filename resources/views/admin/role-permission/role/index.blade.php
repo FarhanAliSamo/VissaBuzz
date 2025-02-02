@@ -156,7 +156,7 @@
             table = $('#example3').DataTable({
                 processing: true,
                 serverSide: true,
-                ajax: "{{ url('roles/data') }}", // URL for the DataTable data
+                ajax: "{{ url('admin/roles/data') }}", // URL for the DataTable data
                 columns: [{
                         data: 'id'
                     },
@@ -209,7 +209,7 @@
                 let formData = $(this).serialize(); // Serialize form data
 
                 $.ajax({
-                    url: "{{ url('roles') }}", // Your route URL
+                    url: "{{ url('admin/roles') }}", // Your route URL
                     type: "POST",
                     data: formData,
                     success: function(response) {
@@ -263,7 +263,7 @@
                 let updateId = $('#updateId').val()
 
                 $.ajax({
-                    url: `{{ url('roles/${updateId}') }}`, // Your route URL
+                    url: `{{ url('admin/roles/${updateId}') }}`, // Your route URL
                     type: "POST",
                     data: formData,
                     success: function(response) {
@@ -322,7 +322,7 @@
 
 
             $.ajax({
-                url: `{{ url('roles/${id}/delete') }}`, // Your route URL
+                url: `{{ url('admin/roles/${id}/delete') }}`, // Your route URL
                 type: "GET",
 
                 success: function(response) {
@@ -370,7 +370,7 @@
             $('#permissionContainer').html('');
 
             $.ajax({
-                url: `{{ url('roles/${id}/edit') }}`, // Your route URL
+                url: `{{ url('admin/roles/${id}/edit') }}`, // Your route URL
                 type: "GET",
 
                 success: function({

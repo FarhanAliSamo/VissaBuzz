@@ -13,15 +13,12 @@
 
 <link href="/assets/admin/vendor/datatables/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css"/>
 <link href="/assets/admin/vendor/datatables/responsive/responsive.css" rel="stylesheet" type="text/css"/>
-<link href="/assets/adminvendor/sweetalert2/dist/sweetalert2.min.css" rel="stylesheet" type="text/css"/>
-            
-
+<link href="/assets/admin/vendor/sweetalert2/dist/sweetalert2.min.css" rel="stylesheet" type="text/css"/>
+        
 <link href="/assets/admin/vendor/select2/css/select2.min.css" rel="stylesheet" type="text/css"/>
 <link href="/assets/admin/vendor/bootstrap-datepicker-master/css/bootstrap-datepicker.min.css" rel="stylesheet"
     type="text/css" />
 <link href="/assets/admin/vendor/owl-carousel/owl.carousel.css" rel="stylesheet" type="text/css" />
-
-
 
 <link href="/assets/admin/vendor/bootstrap-select/dist/css/bootstrap-select.min.css" rel="stylesheet" type="text/css" />
 <link href="/assets/admin/vendor/bootstrap-datepicker-master/css/bootstrap-datepicker.min.css" rel="stylesheet"
@@ -123,11 +120,7 @@
                                                     class="flaticon-381-search-2"></i></button></span>
                                     </div>
                                 </form>
-                                <div class="plus-icon">
-                                    <a href="javascript:void(0);" data-bs-toggle="modal"
-                                        data-bs-target=".bd-example-modal-lg"><i class="fas fa-plus"></i></a>
-
-                                </div>
+                              
                             </div>
                         </div>
                         <ul class="navbar-nav header-right">
@@ -354,28 +347,15 @@
                             <span class="nav-text">Jobs</span>
                         </a>
                         <ul aria-expanded="false">
-                            <li><a href="{{route('company.jobs.index')}}">Job Lists</a></li>
-                            <li><a href="job-view.html">Job View</a></li>
+                            <li><a href="{{route('company.jobs.index')}}">Jobs </a></li>
+                            {{-- <li><a href="job-view.html">Job View</a></li>
                             <li><a href="job-application.html">Job Application</a></li>
                             <li><a href="apply-job.html">Apply Job</a></li>
                             <li><a href="new-job.html">New Job</a></li>
-                            <li><a href="user-profile.html">User Profile</a></li>
+                            <li><a href="user-profile.html">User Profile</a></li> --}}
                         </ul>
                     </li>
-                    
-           
-                    <li>
-                        <a class="has-arrow " href="javascript:void()" aria-expanded="false">
-                        <i class="fa-duotone fa-solid fa-gear"></i>
-                            <span class="nav-text">Roles Permissions</span>
-                        </a>
-                        <ul aria-expanded="false">
-                            <li><a href="{{url('roles')}}">Roles</a></li>
-                            <li><a href="{{url('permissions')}}">Permissions</a></li>
-                        </ul>
-                    </li>
- 
-                   
+                            
                 </ul>
                 
             </div>
@@ -406,7 +386,7 @@
 
 
 
-
+{{-- 
         <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-hidden="true">
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
@@ -530,7 +510,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
 
 
 
@@ -539,8 +519,7 @@
   ***********************************-->
         <div class="footer">
             <div class="copyright">
-                <p>Copyright © Designed &amp; Developed by <a href="https://dexignlab.com/"
-                        target="_blank">DexignLab</a> 2023</p>
+                <p>Copyrights visasbuzz 2025. All Rights Reserved</p>
             </div>
         </div>
 
@@ -551,10 +530,7 @@
     <!--**********************************
         Main wrapper end
     ***********************************-->
-
-    <!--***********************************-->
-
-
+ 
 
     <!--**********************************
   Modal
@@ -568,10 +544,14 @@
     <script src="/assets/admin/vendor/bootstrap-select/dist/js/bootstrap-select.min.js" type="text/javascript"></script>
     <script src="/assets/admin/vendor/bootstrap-datepicker-master/js/bootstrap-datepicker.min.js" type="text/javascript"></script>
     <script src="/assets/admin/vendor/bootstrap-datepicker-master/js/bootstrap-datepicker.min.js" type="text/javascript"></script>
-    <script src="/assets/admin/vendor/apexchart/apexchart.js" type="text/javascript"></script>
-    <script src="/assets/admin/vendor/chartjs/chart.bundle.min.js" type="text/javascript"></script>
+    
+    @if (Request::is('/') || Request::is('/company/dashboard'))
+        <script src="/assets/admin/vendor/apexchart/apexchart.js" type="text/javascript"></script>
+        <script src="/assets/admin/vendor/chartjs/chart.bundle.min.js" type="text/javascript"></script>
+        <script src="/assets/admin/js/dashboard/dashboard-1.js" type="text/javascript"></script>
+    @endif
+    
     <script src="/assets/admin/vendor/peity/jquery.peity.min.js" type="text/javascript"></script>
-    <script src="/assets/admin/js/dashboard/dashboard-1.js" type="text/javascript"></script>
     <script src="/assets/admin/vendor/owl-carousel/owl.carousel.js" type="text/javascript"></script>
     <script src="/assets/admin/vendor/datatables/js/jquery.dataTables.min.js" type="text/javascript"></script>
     <script src="/assets/admin/vendor/datatables/responsive/responsive.js" type="text/javascript"></script>
@@ -580,9 +560,9 @@
     <script src="/assets/admin/js/plugins-init/select2-init.js" type="text/javascript"></script>
     <script src="/assets/admin/js/custom.min.js" type="text/javascript"></script>
     <script src="/assets/admin/js/dlabnav-init.js" type="text/javascript"></script>
-    <script src="/assets/admin/js/demo.js" type="text/javascript"></script>
-    <script src="/assets/admin/js/styleSwitcher.js" type="text/javascript"></script>
+   
 
+      
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <script>

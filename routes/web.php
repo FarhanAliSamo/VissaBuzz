@@ -4,13 +4,18 @@ use App\Http\Controllers\admin\job\IndustryController;
 use App\Http\Controllers\admin\job\JobExperieneController;
 use App\Http\Controllers\admin\job\JobTypeController;
 use App\Http\Controllers\admin\job\SeniorityController;
- 
+use App\Http\Controllers\admin\job\JobController as AdminJobController;
+
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\admin\PermissionController;
 use App\Http\Controllers\admin\RoleController;
 use App\Http\Controllers\admin\UserController;
+
 use App\Http\Controllers\company\CompanyAuthController;
 use App\Http\Controllers\company\JobController;
+
+use App\Http\Controllers\frontend\JobController as FrontJobController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -23,16 +28,31 @@ use App\Http\Controllers\company\JobController;
 |
 */
 
-Route::get('/', function () {
-    return view('admin.dashboard.dashboard');
-});
 
 
 
 // <--------- Admin Routes ---------->
 
+Route::name('front.')->group(function () {
+    
+    Route::get('/', function () {
+        return view('frontend.homepage');
+    })->name('home');
+    
+    Route::get('jobs',[FrontJobController::class,'index'])->name('jobs');
+    Route::get('jobs/apply/{id}',[FrontJobController::class,'show'])->name('jobs.show');
+
+
+});
+
+Route::prefix('admin')->name('admin.')->group(function () {
+    
+    Route::get('/', function () {
+        return view('admin.dashboard.dashboard');
+    });
+    
+    Route::get('permissions/{id}/delete',[PermissionController::class,'destroy']);
 Route::resource('permissions',PermissionController::class);
-Route::get('permissions/{id}/delete',[PermissionController::class,'destroy']);
 
 
 Route::resource('roles',RoleController::class);
@@ -41,8 +61,8 @@ Route::get('roles/{id}/delete',[RoleController::class,'destroy']);
 Route::resource('users',UserController::class);
 Route::get('users/{id}/delete',[UserController::class,'destroy']);
 
-Route::resource('industries',IndustryController::class);
-Route::get('industries/{id}/delete',[IndustryController::class,'destroy']);
+Route::resource('industry',IndustryController::class);
+Route::get('industry/{id}/delete',[IndustryController::class,'destroy']);
 
 Route::resource('job_seniorities',SeniorityController::class);
 Route::get('job_seniorities/{id}/delete',[SeniorityController::class,'destroy']);
@@ -52,6 +72,13 @@ Route::get('job_experiences/{id}/delete',[JobExperieneController::class,'destroy
 
 Route::resource('job_types',JobTypeController::class);
 Route::get('job_types/{id}/delete',[JobTypeController::class,'destroy']);
+
+Route::get('jobs/getJobsData', [AdminJobController::class, 'getJobsData'])->name('jobs.data');
+Route::resource('jobs', AdminJobController::class)->names('jobs');
+// Route::get('jobs/{id}/delete',[AdminJobController::class,'destroy']);
+// Route::get('get-cities/{id}',[AdminJobController::class,'get_cities']);
+
+});
 
 
 // <--------- Company Auth Routes ---------->
@@ -71,7 +98,7 @@ Route::middleware(['company'])->prefix('company')->name('company.')->group(funct
     
     Route::get('jobs/getJobsData', [JobController::class, 'getJobsData'])->name('jobs.data');
     Route::resource('jobs', JobController::class)->names('jobs');
-    Route::get('jobs/{id}/delete',[UserController::class,'destroy']);
+    Route::get('jobs/{id}/delete',[JobController::class,'destroy']);
     Route::get('get-cities/{id}',[JobController::class,'get_cities']);
     
       

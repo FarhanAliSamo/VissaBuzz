@@ -58,7 +58,7 @@
                     </button>
                 </div>
 
-                <form id="createForm">
+                <form id="createForm" enctype="multipart/form-data">
                     @csrf
                     <div class="modal-body">
                         <div class="row">
@@ -67,6 +67,16 @@
                                 <label class="form-label required">Industry Name</label>
                                 <input type="text" name="name" class="form-control solid" placeholder="Name"
                                     aria-label="name" required>
+                            </div>
+
+                            <div class="col-12 mb-4">
+                                <label class="form-label">Industry Image</label>
+                                <input type="file" name="image" class="form-control solid" aria-label="image">
+                            </div>
+
+                            <div class="col-12 mb-4">
+                                <label class="form-label">Industry Icon</label>
+                                <input type="file" name="icon" class="form-control solid" aria-label="icon">
                             </div>
 
                         </div>
@@ -87,12 +97,12 @@
             <div class="modal-content">
 
                 <div class="modal-header">
-                    <h5 class="modal-title">Edit Permission</h5>
+                    <h5 class="modal-title">Edit Industry</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal">
                     </button>
                 </div>
 
-                <form id="updateForm">
+                <form id="updateForm" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
                     <div class="modal-body">
@@ -104,6 +114,18 @@
                                     aria-label="name" id="name" required>
 
                                     <input type="text" class="form-control solid" hidden id="updateId">
+                            </div>
+
+                            <div class="col-12 mb-4">
+                                <label class="form-label">Industry Image</label>
+                                <input type="file" name="image" class="form-control solid" aria-label="image">
+                                <img id="currentImage" src="" alt="Current Image" width="100" style="display: none;">
+                            </div>
+
+                            <div class="col-12 mb-4">
+                                <label class="form-label">Industry Icon</label>
+                                <input type="file" name="icon" class="form-control solid" aria-label="icon">
+                                <img id="currentIcon" src="" alt="Current Icon" width="100" style="display: none;">
                             </div>
 
                         </div>
@@ -130,7 +152,7 @@
      table = $('#example3').DataTable({
         processing: true,
         serverSide: true,
-        ajax: "{{ url('industries/data') }}",  // URL for the DataTable data
+        ajax: "{{ url('admin/industry/data') }}",  // URL for the DataTable data
         columns: [
             { data: 'id' },
             { data: 'name' },
@@ -169,12 +191,14 @@
                     )
                     .prop('disabled', true);
 
-                let formData = $(this).serialize(); // Serialize form data
+                let formData = new FormData(this); // Use FormData to handle file uploads
 
                 $.ajax({
-                    url: "{{ url('industries') }}", // Your route URL
+                    url: "{{ url('admin/industry') }}", // Your route URL
                     type: "POST",
                     data: formData,
+                    contentType: false,
+                    processData: false,
                     success: function(response) {
                         if (response.success) {
                             Toast.fire({
@@ -213,6 +237,8 @@
             $('#updateForm').on('submit', function(e) {
                 e.preventDefault();
 
+
+                
                 let $submitButton = $(this).find('button[type="submit"]');
                 let originalText = $submitButton.html(); // Save original button text
 
@@ -222,13 +248,18 @@
                     )
                     .prop('disabled', true);
 
-                let formData = $(this).serialize(); // Serialize form data
+                let formData = new FormData(this); // Use FormData to handle file uploads
                 let updateId = $('#updateId').val()
 
+
+
+
                 $.ajax({
-                    url: `{{ url('industries/${updateId}') }}`, // Your route URL
+                    url: `{{ url('admin/industry/${updateId}') }}`, // Your route URL
                     type: "POST",
                     data: formData,
+                    contentType: false,
+                    processData: false,
                     success: function(response) {
                         if (response.success) {
                             Toast.fire({
@@ -285,7 +316,7 @@
 
 
             $.ajax({
-                url: `{{ url('industries/${id}/delete') }}`, // Your route URL
+                url: `{{ url('admin/industry/${id}/delete') }}`, // Your route URL
                 type: "GET",
 
                 success: function(response) {
@@ -330,13 +361,22 @@
         }
         function edit(id) {
 
+            $('#currentImage').hide();
+            $('#currentIcon').hide();
+
             $.ajax({
-                url: `{{ url('industries/${id}/edit') }}`, // Your route URL
+                url: `{{ url('admin/industry/${id}/edit') }}`, // Your route URL
                 type: "GET",
 
                 success: function({data}) {
                      $('#name').val(data.name)
                      $('#updateId').val(data.id)
+                     if (data.image) {
+                        $('#currentImage').attr('src', `${data.image}`).show();
+                    }
+                    if (data.icon) {
+                        $('#currentIcon').attr('src', `${data.icon}`).show();
+                    }
                 },
                 error: function(xhr) {
                     if (xhr.status === 422) {

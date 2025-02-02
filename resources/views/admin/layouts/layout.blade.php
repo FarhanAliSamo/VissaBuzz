@@ -13,7 +13,7 @@
 
 <link href="/assets/admin/vendor/datatables/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css"/>
 <link href="/assets/admin/vendor/datatables/responsive/responsive.css" rel="stylesheet" type="text/css"/>
-<link href="/assets/adminvendor/sweetalert2/dist/sweetalert2.min.css" rel="stylesheet" type="text/css"/>
+<link href="/assets/admin/vendor/sweetalert2/dist/sweetalert2.min.css" rel="stylesheet" type="text/css"/>
             
 
 
@@ -121,11 +121,7 @@
                                                     class="flaticon-381-search-2"></i></button></span>
                                     </div>
                                 </form>
-                                <div class="plus-icon">
-                                    <a href="javascript:void(0);" data-bs-toggle="modal"
-                                        data-bs-target=".bd-example-modal-lg"><i class="fas fa-plus"></i></a>
-
-                                </div>
+                     
                             </div>
                         </div>
                         <ul class="navbar-nav header-right">
@@ -330,8 +326,11 @@
                         </a>
                     </div>
                 </div>
+
+                
                 <ul class="metismenu" id="menu">
-                    <li><a class="has-arrow " href="javascript:void()" aria-expanded="false">
+                    <li><a href="{{url('admin/dashboard')}}" ><i class="flaticon-025-dashboard"></i><span class="nav-text">Dashboard</span></a></li>
+                    {{-- <li><a class="has-arrow " href="javascript:void()" aria-expanded="false">
                             <i class="flaticon-025-dashboard"></i>
                             <span class="nav-text">Dashboard</span>
                         </a>
@@ -345,7 +344,7 @@
                             <li><a href="companies.html">Companies</a></li>
                         </ul>
 
-                    </li>
+                    </li> --}}
                     <li>
                         
                         <a class="has-arrow " href="javascript:void()" aria-expanded="false">
@@ -354,16 +353,16 @@
                         </a>
                         
                         <ul aria-expanded="false">
-                            <li><a href="{{url('jobs')}}">Jobs</a></li>
-                            <li><a href="{{url('industries')}}">Industries</a></li>
-                            <li><a href="{{url('job_types')}}">Job Types</a></li>
-                            <li><a href="{{url('job_seniorities')}}">Seniorities</a></li>
-                            <li><a href="{{url('job_experiences')}}">Experiences</a></li>
+                            <li><a href="{{url('admin/jobs')}}">Jobs</a></li>
+                            <li><a href="{{url('admin/industry')}}">Industries</a></li>
+                            <li><a href="{{url('admin/job_types')}}">Job Types</a></li>
+                            <li><a href="{{url('admin/job_seniorities')}}">Seniorities</a></li>
+                            <li><a href="{{url('admin/job_experiences')}}">Experiences</a></li>
                         </ul>
 
                     </li>
                     
-                    <li><a href="{{route('users.index')}}" ><i class="fa-solid fa-user"></i><span class="nav-text">Users</span></a></li>
+                    <li><a href="{{route('admin.users.index')}}" ><i class="fa-solid fa-user"></i><span class="nav-text">Users</span></a></li>
            
                     <li>
                         <a class="has-arrow " href="javascript:void()" aria-expanded="false">
@@ -371,8 +370,8 @@
                             <span class="nav-text">Roles Permissions</span>
                         </a>
                         <ul aria-expanded="false">
-                            <li><a href="{{url('roles')}}">Roles</a></li>
-                            <li><a href="{{url('permissions')}}">Permissions</a></li>
+                            <li><a href="{{url('admin/roles')}}">Roles</a></li>
+                            <li><a href="{{url('admin/permissions')}}">Permissions</a></li>
                         </ul>
                     </li>
 
@@ -408,7 +407,7 @@
 
 
 
-        <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-hidden="true">
+        {{-- <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-hidden="true">
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -532,7 +531,7 @@
                 </div>
             </div>
         </div>
-
+ --}}
 
 
         <!--**********************************
@@ -540,8 +539,7 @@
   ***********************************-->
         <div class="footer">
             <div class="copyright">
-                <p>Copyright © Designed &amp; Developed by <a href="https://dexignlab.com/"
-                        target="_blank">DexignLab</a> 2023</p>
+                <p>Copyrights visasbuzz 2025. All Rights Reserved</p>
             </div>
         </div>
 
@@ -569,18 +567,23 @@
     <script src="/assets/admin/vendor/bootstrap-select/dist/js/bootstrap-select.min.js" type="text/javascript"></script>
     <script src="/assets/admin/vendor/bootstrap-datepicker-master/js/bootstrap-datepicker.min.js" type="text/javascript"></script>
     <script src="/assets/admin/vendor/bootstrap-datepicker-master/js/bootstrap-datepicker.min.js" type="text/javascript"></script>
-    <script src="/assets/admin/vendor/apexchart/apexchart.js" type="text/javascript"></script>
-    <script src="/assets/admin/vendor/chartjs/chart.bundle.min.js" type="text/javascript"></script>
+    
+    @if (Request::is('admin/') || Request::is('/company/dashboard'))
+        <script src="/assets/admin/vendor/apexchart/apexchart.js" type="text/javascript"></script>
+        <script src="/assets/admin/vendor/chartjs/chart.bundle.min.js" type="text/javascript"></script>
+        <script src="/assets/admin/js/dashboard/dashboard-1.js" type="text/javascript"></script>
+    @endif
+    
     <script src="/assets/admin/vendor/peity/jquery.peity.min.js" type="text/javascript"></script>
-    <script src="/assets/admin/js/dashboard/dashboard-1.js" type="text/javascript"></script>
     <script src="/assets/admin/vendor/owl-carousel/owl.carousel.js" type="text/javascript"></script>
     <script src="/assets/admin/vendor/datatables/js/jquery.dataTables.min.js" type="text/javascript"></script>
     <script src="/assets/admin/vendor/datatables/responsive/responsive.js" type="text/javascript"></script>
     <script src="/assets/admin/js/plugins-init/datatables.init.js" type="text/javascript"></script>
     <script src="/assets/admin/js/custom.min.js" type="text/javascript"></script>
     <script src="/assets/admin/js/dlabnav-init.js" type="text/javascript"></script>
-    <script src="/assets/admin/js/demo.js" type="text/javascript"></script>
-    <script src="/assets/admin/js/styleSwitcher.js" type="text/javascript"></script>
+    
+    {{-- <script src="/assets/admin/js/demo.js" type="text/javascript"></script> --}}
+    {{-- <script src="/assets/admin/js/styleSwitcher.js" type="text/javascript"></script> --}}
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 

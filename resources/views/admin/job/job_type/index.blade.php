@@ -130,7 +130,7 @@
      table = $('#example3').DataTable({
         processing: true,
         serverSide: true,
-        ajax: "{{ url('job_types/data') }}",  // URL for the DataTable data
+        ajax: "{{ url('admin/job_types/data') }}",  // URL for the DataTable data
         columns: [
             { data: 'id' },
             { data: 'name' },
@@ -172,7 +172,7 @@
                 let formData = $(this).serialize(); // Serialize form data
 
                 $.ajax({
-                    url: "{{ url('job_types') }}", // Your route URL
+                    url: "{{ url('admin/job_types') }}", // Your route URL
                     type: "POST",
                     data: formData,
                     success: function(response) {
@@ -226,7 +226,7 @@
                 let updateId = $('#updateId').val()
 
                 $.ajax({
-                    url: `{{ url('job_types/${updateId}') }}`, // Your route URL
+                    url: `{{ url('admin/job_types/${updateId}') }}`, // Your route URL
                     type: "POST",
                     data: formData,
                     success: function(response) {
@@ -285,7 +285,7 @@
 
 
             $.ajax({
-                url: `{{ url('job_types/${id}/delete') }}`, // Your route URL
+                url: `{{ url('admin/job_types/${id}/delete') }}`, // Your route URL
                 type: "GET",
 
                 success: function(response) {
@@ -331,7 +331,7 @@
         function edit(id) {
 
             $.ajax({
-                url: `{{ url('job_types/${id}/edit') }}`, // Your route URL
+                url: `{{ url('admin/job_types/${id}/edit') }}`, // Your route URL
                 type: "GET",
 
                 success: function({data}) {

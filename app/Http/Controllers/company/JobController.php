@@ -7,9 +7,7 @@ use App\Models\City;
 use App\Models\Country;
 use Illuminate\Http\Request;
  
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
-use Spatie\Permission\Models\Role;
 use Yajra\DataTables\Facades\DataTables;
 use App\Models\Industry;
 use App\Models\JobExperience;
@@ -32,16 +30,16 @@ class JobController extends Controller
         $seniorities = Seniority::all();
         $job_types = JobType::all();
         $job_experiences = JobExperience::all();
-        $countries = Country::all();
- 
+        $countries = Country::orderBy('name')->get();
+    
         return view('company.job.index',compact('industries','seniorities','job_types','job_experiences','countries'));
     }
 
     
     public function get_cities($id)
     {
-        $data = City::where('country_id', $id)->get();
-        return response()->json(['data' => $data]);
+        $data = City::where('country_id',$id)->get();
+        return response()->json(['data' => $data,'country id' => $id]);
     }
 
 
@@ -170,26 +168,64 @@ class JobController extends Controller
     }
 
 
-    public function edit(Role $role)
+    public function edit(Job $job)
     {
-        $rolePermissions = DB::table('role_has_permissions')
-                                ->where('role_has_permissions.role_id',$role->id)
-                                ->pluck('role_has_permissions.permission_id','role_has_permissions.permission_id')
-                                ->all();
-        return response()->json(['data' => $role,'rolePermissions' => $rolePermissions]);
-
+        return response()->json(['data' => $job]);
     }
 
-    public function update(Request $request, Role $role)
+    public function update(Request $request, Job $job)
     {
-
-
         $validator = Validator::make($request->all(), [
-            'name' => [
+            'job_title' => [
                 'required',
                 'string',
-                'unique:roles,name,' . $role->id
-            ]
+            ],
+            'seniority_id' => [
+                'required',
+            ],
+            'industry_id' => [
+                'required',
+            ],
+            'job_type_id' => [
+                'required',
+            ],
+            'experience_id' => [
+                'required',
+            ],
+            'gender' => [
+                'required',
+                'string'
+            ],
+            'salary_from' => [
+                'required',
+                'integer'
+            ],
+            'salary_to' => [
+                'required',
+                'integer'
+            ],
+            'currency' => [
+                'required',
+                'string'
+            ],
+            'location' => [
+                'required',
+                'string'
+            ],
+            'country_id' => [
+                'required',
+            ],
+            'city_id' => [
+                'required',
+            ],
+            'job_description' => [
+                'required',
+                'string'
+            ],
+            'candidate_profile' => [
+                'required',
+                'string'
+            ],
         ]);
 
         if ($validator->fails()) {
@@ -199,25 +235,32 @@ class JobController extends Controller
             ], 422);
         }
 
-        $role->update(['name' => $request->name]);
-        $role->syncPermissions($request->permission);
+        if (Auth::guard('company')->check()) {
+            $job->update($request->all());
+
+            return response()->json([
+                'success' => true,
+                'message' => 'Job Updated Successfully',
+                'data' => $job
+            ]);
+        }
 
         return response()->json([
-            'success' => true,
-            'message' => 'Role Updated',
-            'data' => $role
-        ]);
+            'success' => false,
+            'errors' => 'We are sorry to invoice please login and try again'
+        ], 500);
     }
 
     public function destroy($id)
     {
-        $role = Role::find($id);
-        $role->delete();
-
+        
         return response()->json([
-            'success' => true,
-            'message' => 'Role Deleted Successfully',
+            'success' => $id,
+            'message' => 'Job Deleted Successfully',
         ]);
+        $data = Job::find($id);
+        $data->delete();
+
     }
 }
 

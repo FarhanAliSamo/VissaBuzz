@@ -146,10 +146,11 @@
                             <div class="col-xl-6  col-md-6 mb-4">
                                 <label class="form-label required">Select Currency:</label>
                                 <select name="currency" class="default-select wide form-control solid required" required>
-                                    <option selected>PKR</option>
-                                    <option>EUR</option>
-                                    <option>INR</option>
-                                    <option>DOLLAR</option>
+                                    <option  selected>Choose...</option>
+
+                                    @foreach ($countries as $country)
+                                        <option value="{{$country->currency}}">{{$country->currency}}</option>
+                                    @endforeach
                                 </select>
                             </div>
 
@@ -165,7 +166,6 @@
 
                             <div class="col-xl-6  col-md-6 mb-4">
                                 <label class="form-label required">Country</label>
- 
                                 <select name="country_id" class="default-select wide form-control solid required" required onchange="fetchCities(this.value)" >
                                     <option selected>Choose...</option>
                                     @foreach ($countries as $country)
@@ -173,6 +173,7 @@
                                     @endforeach
                                 </select>
                             </div>
+                            
 
                             <div class="col-xl-6  col-md-6 mb-4">
                                 <label class="form-label required">Select City:</label>
@@ -205,13 +206,13 @@
         </div>
     </div>
  
+ 
     {{-- //  Edit Modal ----- --}}
     <div class="modal fade edit-modal-lg" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-dialog ">
+        <div class="modal-dialog modal-lg">
             <div class="modal-content">
-
                 <div class="modal-header">
-                    <h5 class="modal-title">Edit User</h5>
+                    <h5 class="modal-title">Edit Job</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal">
                     </button>
                 </div>
@@ -222,60 +223,140 @@
                     <input type="text" class="form-control solid" name="description" hidden id="updateId">
 
                     <div class="modal-body">
-                        <div class="row gy-3">
-
-                            <div class=" col-12">
-                                <label class="form-label required">Name</label>
-                                <input type="text" name="name" id="name" class="form-control solid" name="description" placeholder="Name"
-                                    aria-label="name" required>
-                            </div>
+                        <div class="row">
                             
-
-                            <div class=" col-12">
-                                <label class="form-label required">Email</label>
-                                <input type="email" name="email" id="email" class="form-control solid" name="description" placeholder="Email"
-                                    aria-label="email" required>
+                            <div class="col-xl-6  col-md-6 mb-4">
+                                <label class="form-label required">Job Title</label>
+                                <input type="text" class="form-control solid" id="job_title"   placeholder="Title"
+                                    aria-label="name" name="job_title" required>
                             </div>
 
-                            <div class="col-12">
-                                <label class="form-label required">Password</label>
-                                <div class="input-group">
-                                    <input type="password" name="password" id="password" class="form-control solid password-field"  placeholder="Password" 
-                                           aria-label="password" required>
-                                    <button type="button" class="btn btn-primary toggle-password" >
-                                        <i class="fas fa-eye"></i> <!-- Font Awesome Icon -->
-                                    </button>
-                                </div>
-                            </div>
-                           
-                            <div class=" col-12">
-                                <label class="form-label required">Roles</label>
-                                <select class="form-select form-control" style="height: 100%" name="roles[]" id="rolesId" multiple>
-                                    
+                            <div class="col-xl-6  col-md-6 mb-4">
+                                <label class="form-label required">Seniority</label>
+                                <select class="default-select wide form-control solid" name="seniority_id" id="seniority" required>
+                                    <option selected>Choose...</option>
+                                
                                 </select>
                             </div>
 
+                            <div class="col-xl-6  col-md-6 mb-4">
+                                <label class="form-label required">Industry</label>
+                                <select class="default-select wide form-control solid" name="industry_id" id="industry" required>
+                                    <option selected>Choose...</option>
+
+                              
+                                     
+                                </select>
+                            </div>
+
+                            <div class="col-xl-6  col-md-6 mb-4">
+                                <label class="form-label required">Job Type</label>
+                                <select class="default-select wide form-control solid" name="job_type_id" id="job_type"  required>
+                                    <option selected>Choose...</option>
+                                    
  
+                                </select>
+                            </div>
+                   
+                            <div class="col-xl-6  col-md-6 mb-4">
+                                <label class="form-label required">Select Experience:</label>
+                                <select class="default-select wide form-control solid" name="experience_id" id="experience" required>
+                                    <option selected>Choose...</option>
+                           
+
+                                </select>
+                            </div>
+                            
+                            <div class="col-xl-6  col-md-6 mb-4">
+                                <label class="form-label required">Select Gender:</label>
+                                <select class="default-select wide form-control solid" name="gender" id="gender" required>
+                                    <option selected>Choose...</option>
+                                   
+
+                                </select>
+                            </div>
+
+                            <div class="col-xl-6  col-md-6 mb-4">
+                                <label class="form-label required">Salary From</label>
+                                <input type="number" class="form-control solid" name="salary_from" placeholder="10,000"
+                                    aria-label="name" id="salary_from" required>
+                            </div>
+                            <div class="col-xl-6  col-md-6 mb-4">
+                                <label class="form-label required">Salary To</label>
+                                <input type="number"  class="form-control solid" name="salary_to" placeholder="20,000"
+                                    aria-label="name" id="salary_to" required >
+                            </div>
+
+                            <div class="col-xl-6  col-md-6 mb-4">
+                                <label class="form-label required">Select Currency:</label>
+                                <select name="currency" class="default-select wide form-control solid required" id="currency"  required>
+                                    <option  selected>Choose...</option>
+ 
+                                </select>
+                            </div>
+
+                            <div class="col-xl-6  col-md-6 mb-4">
+                                <label class="form-label required">Location:</label>
+                                <select name="location" class="default-select wide form-control solid required" id="location" required >
+                                    <option  selected>Choose...</option>
+                                    
+                                </select>
+                            </div>                           
+
+                            <div class="col-xl-6  col-md-6 mb-4">
+                                <label class="form-label required">Country</label>
+                                <select name="country_id" class="default-select wide form-control solid required" required onchange="fetchCities(this.value,1)" id="country">
+                                    <option selected>Choose...</option>
+                                   
+                                </select>
+                            </div>
+                            
+
+                            <div class="col-xl-6  col-md-6 mb-4">
+                                <label class="form-label required">Select City:</label>
+                                <select name="city_id" id="city_update" class="default-select wide form-control solid required" required>
+                                    <option selected>Choose...</option>
+                                </select>
+                            </div>
+                            
+ 
+                            <div class="col-xl-12 mb-4">
+                                <label class="form-label required">Job Description:</label>
+                                <textarea class="form-control solid" name="job_description" required rows="5" aria-label="With textarea" id="job_description"></textarea>
+                            </div>
+ 
+                            <div class="col-xl-12 mb-4">
+                                <label class="form-label required">Candidate Profile:</label>
+                                <textarea class="form-control solid" name="candidate_profile" rows="5" aria-label="With textarea" required id="candidate_profile"></textarea>
+                            </div>
+
+
                         </div>
                     </div>
-
-
+                    
                     <div class="modal-footer">
                         <button type="button" class="btn btn-danger light" data-bs-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary">Update</button>
+                        <button type="submit" class="btn btn-primary">Update Job</button>
                     </div>
                 </form>
             </div>
         </div>
     </div>
-
+ 
+ 
 @endsection
 
 @section('script')
     <script>
+        let seniorities_array = @json($seniorities);
+        let industries_array = @json($industries);
+        let job_types_array = @json($job_types);
+        let job_experiences_array = @json($job_experiences);
+        let countries_array = @json($countries);
+
+
         let table
-         
-   
+          
         $(document).ready(function() {
             if ($.fn.DataTable.isDataTable('#example3')) {
                 $('#example3').DataTable().destroy();
@@ -490,28 +571,95 @@
         }
 
         function edit(id) {
-            $('#rolesId').html('');
-
+           
             $.ajax({
                 url: `{{ url('company/jobs/${id}/edit') }}`, // Your route URL
                 type: "GET",
 
                 success: function({
-                    data,userRoles,roles
+                    data
                 }) {
-                    
-                    $('#name').val(data.name)
-                    $('#email').val(data.email)
+                    console.log(data)
+                   
                     $('#updateId').val(data.id)
+                    $('#job_title').val(data.job_title)
+                     
+                    $('#salary_from').val(data.salary_from)
+                    $('#salary_to').val(data.salary_to)
+             
+                    $   ('#job_description').val(data.job_description)
+                    $('#candidate_profile').val(data.candidate_profile)
  
-                    roles.forEach(role => {
-                        
-                        let isSelected = userRoles.some(userRole => userRole === role) ? 'selected' : '';
+                    $('#industry').empty().append('<option selected>Choose...</option>'); // Empty the dropdown first
+                    industries_array.forEach(d => {
+                        $('#industry').append(`
+                            <option ${data.industry_id == d.id ? 'selected' : ''} value="${d.id}">${d.name}</option>      
+                        `);
+                    });
+                    $('#industry').selectpicker('refresh');
 
-                    $('#rolesId').append(`
-                        <option ${isSelected} value="${role}">${role}</option>      
+                    $('#seniority').empty().append('<option selected>Choose...</option>'); // Empty the dropdown first
+                    seniorities_array.forEach(d => {
+                        $('#seniority').append(`
+                            <option ${data.seniority_id == d.id ? 'selected' : ''} value="${d.id}">${d.name}</option>      
+                        `);
+                    });
+                    $('#seniority').selectpicker('refresh');
+
+                    $('#job_type').empty().append('<option selected>Choose...</option>'); // Empty the dropdown first
+                    job_types_array.forEach(d => {
+                        $('#job_type').append(`
+                            <option ${data.job_type_id == d.id ? 'selected' : ''} value="${d.id}">${d.name}</option>      
+                        `);
+                    });
+                    $('#job_type').selectpicker('refresh');
+ 
+
+                    $('#experience').empty().append('<option selected>Choose...</option>'); // Empty the dropdown first
+                    job_experiences_array.forEach(d => {
+                        $('#experience').append(`
+                            <option ${data.experience_id == d.id ? 'selected' : ''} value="${d.id}">${d.name}</option>      
+                        `);
+                    });
+                    $('#experience').selectpicker('refresh');
+  
+
+                    $('#currency').empty().append('<option selected>Choose...</option>'); // Empty the dropdown first
+                    countries_array.forEach(d => {
+                        $('#currency').append(`
+                            <option ${data.currency == d.currency ? 'selected' : ''} value="${d.currency}">${d.currency}</option>      
+                        `);
+                    });
+                    $('#currency').selectpicker('refresh');
+ 
+
+                    $('#country').empty().append('<option selected>Choose...</option>'); // Empty the dropdown first
+                    countries_array.forEach(d => {
+                        $('#country').append(`
+                            <option ${data.country_id == d.id ? 'selected' : ''} value="${d.id}">${d.name}</option>      
+                        `);
+                    });
+                    $('#country').selectpicker('refresh');
+
+                    $('#location').empty().append('<option selected>Choose...</option>'); // Empty the dropdown first
+                    $('#location').append(`
+                        <option value="onsite" ${data.location == 'onsite' ? 'selected' : ''} >Onsite</option>
+                        <option value="remote" ${data.location == 'remote' ? 'selected' : ''} >Remote</option>
+                        <option value="hybrid" ${data.location == 'hybrid' ? 'selected' : ''} >Hybrid</option>      
                     `);
-                });
+                    $('#location').selectpicker('refresh');
+ 
+
+                    $('#gender').empty().append('<option selected>Choose...</option>'); // Empty the dropdown first
+                    $('#gender').append(`
+                        <option ${data.gender == 'male' ? 'selected' : ''} value="male">Male</option>
+                        <option ${data.gender == 'female' ? 'selected' : ''} value="female">Female</option>
+                        <option ${data.gender == 'any' ? 'selected' : ''} value="any">Any</option>      
+                    `);
+                    $('#gender').selectpicker('refresh');
+  
+                    
+                    fetchCities(data.country_id,1,data.city_id)
 
                 },
                 error: function(xhr) {
@@ -570,16 +718,21 @@ toggleButtons.forEach(button => {
     });
 });
 
-    function fetchCities(countryId) {
-        const citySelect = $('#city');
+    function fetchCities(countryId,isUpdate,city_id = null) {
         
+        let citySelect;
+        if(isUpdate){
+            citySelect = $('#city_update');
+        }else{
+            citySelect = $('#city');
+        }
         $.ajax({
             url: `/company/get-cities/${countryId}`,
             type: 'GET',
             success: function(response) {
+                citySelect.empty().append('<option selected>Choose...</option>'); // Empty the dropdown first
                 response.data.forEach(city => {
-                    citySelect.empty().append('<option selected>Choose...</option>'); // Empty the dropdown first
-                    citySelect.append(`<option value="${city.id}">${city.name}</option>`);
+                    citySelect.append(`<option ${city.id == city_id ? 'selected' : ''} value="${city.id}">${city.name}</option>`);
                 });
                 citySelect.selectpicker('refresh'); // Refresh the dropdown
             },
