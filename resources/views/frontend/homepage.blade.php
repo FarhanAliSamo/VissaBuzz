@@ -16,7 +16,7 @@
                   <div class="row">
                      <div class="col-md-12 col-sm-12 content-home">
                         <div class="banner-welcome">
-                           <h4>Over <span>100,000+</span> Testiing</h4>
+                           <h4>Over <span>100,000+</span> jobs are waiting for you</h4>
                            {{-- <h4>Over <span>100,000+</span> jobs are waiting for you</h4> --}}
                            <form>
                               <div class="video-banner-input">
