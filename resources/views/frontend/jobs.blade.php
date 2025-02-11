@@ -232,9 +232,9 @@
                                         </div>
                                         <div class="company-list-details">
                                             <h3><a href="{{route('front.jobs.show',['id' => $job->id])}}">{{$job->job_title}}</a></h3>
-                                            <p class="company-state"><i class="fa fa-map-marker"></i> {{$job->city->name}}, {{$job->country->name}} </p>
+                                            <p class="company-state"><i class="fa fa-map-marker"></i> {{$job?->city?->name}}, {{$job?->country?->name}} </p>
                                           <p class="open-icon"><i class="fa fa-clock-o"></i>{{ $job->created_at->format('F j, Y') }}</p>
-                                            <p class="varify"><i class="fa fa-check"></i>Fixed price : {{ $job->currency }} {{$job->salary_from}} - {{$job->salary_to}}</p>
+                                            @if($job->salary_from && $job->salary_to)<p class="varify"><i class="fa fa-check"></i>Fixed price : {{ $job?->currency }} {{$job?->salary_from}} - {{$job?->salary_to}}</p>@endif
                                             <p class="rating-company">4.1</p>
                                         </div>
                                         <div class="company-list-btn">

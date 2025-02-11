@@ -87,10 +87,7 @@ class JobController extends Controller
                 'required',
                 'string',
             ],
-            'seniority_id' => [
-                'required',
-                 
-            ],
+            
             'industry_id' => [
                 'required',
                 
@@ -99,26 +96,11 @@ class JobController extends Controller
                 'required',
                  
             ],
-            'experience_id' => [
-                'required',
-                
-            ],
             'gender' => [
                 'required',
                 'string'
             ],
-            'salary_from' => [
-                'required',
-                'integer'
-            ],
-            'salary_to' => [
-                'required',
-                'integer'
-            ],
-            'currency' => [
-                'required',
-                'string'
-            ],
+             
             'location' => [
                 'required',
                 'string'
@@ -180,34 +162,19 @@ class JobController extends Controller
                 'required',
                 'string',
             ],
-            'seniority_id' => [
-                'required',
-            ],
+           
             'industry_id' => [
                 'required',
             ],
             'job_type_id' => [
                 'required',
             ],
-            'experience_id' => [
-                'required',
-            ],
+           
             'gender' => [
                 'required',
                 'string'
             ],
-            'salary_from' => [
-                'required',
-                'integer'
-            ],
-            'salary_to' => [
-                'required',
-                'integer'
-            ],
-            'currency' => [
-                'required',
-                'string'
-            ],
+            
             'location' => [
                 'required',
                 'string'
@@ -254,12 +221,12 @@ class JobController extends Controller
     public function destroy($id)
     {
         
+        $data = Job::find($id);
+        $data->delete();
         return response()->json([
             'success' => $id,
             'message' => 'Job Deleted Successfully',
         ]);
-        $data = Job::find($id);
-        $data->delete();
 
     }
 }

@@ -76,9 +76,9 @@
                             </div>
 
                             <div class="col-xl-6  col-md-6 mb-4">
-                                <label class="form-label required">Seniority</label>
-                                <select class="default-select wide form-control solid" name="seniority_id" required>
-                                    <option selected>Choose...</option>
+                                <label class="form-label ">Seniority (optional) </label>
+                                <select class="default-select wide form-control solid" name="seniority_id"  >
+                                    <option value="" selected >Choose...</option>
                                     @foreach ($seniorities as $seniority)
                                         <option value="{{$seniority->id}}">{{$seniority->name}}</option>
                                     @endforeach
@@ -88,7 +88,8 @@
                             <div class="col-xl-6  col-md-6 mb-4">
                                 <label class="form-label required">Industry</label>
                                 <select class="default-select wide form-control solid" name="industry_id" required>
-                                    <option selected>Choose...</option>
+
+                                    <option disabled selected >Choose...</option>
 
                                     @foreach ($industries as $industry)
                                         <option value="{{$industry->id}}">{{$industry->name}}</option>
@@ -99,8 +100,8 @@
 
                             <div class="col-xl-6  col-md-6 mb-4">
                                 <label class="form-label required">Job Type</label>
-                                <select class="default-select wide form-control solid" name="job_type_id" required>
-                                    <option selected>Choose...</option>
+                                <select class="default-select wide form-control solid" name="job_type_id" required >
+                                    <option disabled selected >Choose...</option>
                                     @foreach ($job_types as $job_type)
                                         <option value="{{$job_type->id}}">{{$job_type->name}}</option>
                                     @endforeach
@@ -109,9 +110,9 @@
                             </div>
                    
                             <div class="col-xl-6  col-md-6 mb-4">
-                                <label class="form-label required">Select Experience:</label>
-                                <select class="default-select wide form-control solid" name="experience_id" required>
-                                    <option selected>Choose...</option>
+                                <label class="form-label ">Select Experience (optional) : </label>
+                                <select class="default-select wide form-control solid" name="experience_id"  >
+                                    <option value="" selected >Choose...</option>
                                     
                                     @foreach ($job_experiences as $job_experience)
                                         <option value="{{$job_experience->id}}">{{$job_experience->name}}</option>
@@ -122,32 +123,32 @@
                             </div>
                             
                             <div class="col-xl-6  col-md-6 mb-4">
+
                                 <label class="form-label required">Select Gender:</label>
                                 <select class="default-select wide form-control solid" name="gender" required>
-                                    <option selected>Choose...</option>
+                                    <option disabled selected  >Choose...</option>
                                     <option value="male">Male</option>
                                     <option value="female">Female</option>
                                     <option value="any">Any</option>
-
                                 </select>
+
                             </div>
 
                             <div class="col-xl-6  col-md-6 mb-4">
-                                <label class="form-label required">Salary From</label>
+                                <label class="form-label  ">Salary From (optional)</label>
                                 <input type="number" class="form-control solid" name="salary_from" placeholder="10,000"
-                                    aria-label="name" required>
+                                    aria-label="name"  >
                             </div>
                             <div class="col-xl-6  col-md-6 mb-4">
-                                <label class="form-label required">Salary To</label>
+                                <label class="form-label  ">Salary To (optional)</label>
                                 <input type="number"  class="form-control solid" name="salary_to" placeholder="20,000"
-                                    aria-label="name" required>
+                                    aria-label="name"  >
                             </div>
 
                             <div class="col-xl-6  col-md-6 mb-4">
-                                <label class="form-label required">Select Currency:</label>
-                                <select name="currency" class="default-select wide form-control solid required" required>
-                                    <option  selected>Choose...</option>
-
+                                <label class="form-label  ">Select Currency (optional) :</label>
+                                <select name="currency" class="default-select wide form-control solid  "  >
+                                    <option value="" selected  >Choose...</option>
                                     @foreach ($countries as $country)
                                         <option value="{{$country->currency}}">{{$country->currency}}</option>
                                     @endforeach
@@ -157,7 +158,7 @@
                             <div class="col-xl-6  col-md-6 mb-4">
                                 <label class="form-label required">Location:</label>
                                 <select name="location" class="default-select wide form-control solid required" required >
-                                    <option  selected>Choose...</option>
+                                    <option disabled selected>Choose...</option>
                                     <option value="onsite">Onsite</option>
                                     <option value="remote">Remote</option>
                                     <option value="hybrid">Hybrid</option>
@@ -166,8 +167,8 @@
 
                             <div class="col-xl-6  col-md-6 mb-4">
                                 <label class="form-label required">Country</label>
-                                <select name="country_id" class="default-select wide form-control solid required" required onchange="fetchCities(this.value)" >
-                                    <option selected>Choose...</option>
+                                <select name="country_id"  class="default-select wide form-control solid required" required onchange="fetchCities(this.value)" >
+                                    <option disabled selected>Choose...</option>
                                     @foreach ($countries as $country)
                                         <option value="{{$country->id}}">{{$country->name}}</option>
                                     @endforeach
@@ -178,7 +179,7 @@
                             <div class="col-xl-6  col-md-6 mb-4">
                                 <label class="form-label required">Select City:</label>
                                 <select name="city_id" id="city" class="default-select wide form-control solid required" required>
-                                    <option selected>Choose...</option>
+                                    <option disabled selected >Choose...</option>
                                 </select>
                             </div>
                             
@@ -205,8 +206,7 @@
             </div>
         </div>
     </div>
- 
- 
+  
     {{-- //  Edit Modal ----- --}}
     <div class="modal fade edit-modal-lg" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog modal-lg">
@@ -232,9 +232,9 @@
                             </div>
 
                             <div class="col-xl-6  col-md-6 mb-4">
-                                <label class="form-label required">Seniority</label>
-                                <select class="default-select wide form-control solid" name="seniority_id" id="seniority" required>
-                                    <option selected>Choose...</option>
+                                <label class="form-label  ">Seniority  (optional) </label>
+                                <select class="default-select wide form-control solid" name="seniority_id" id="seniority"  >
+                                    <option value="" selected>Choose...</option>
                                 
                                 </select>
                             </div>
@@ -242,26 +242,24 @@
                             <div class="col-xl-6  col-md-6 mb-4">
                                 <label class="form-label required">Industry</label>
                                 <select class="default-select wide form-control solid" name="industry_id" id="industry" required>
-                                    <option selected>Choose...</option>
-
-                              
-                                     
+                                    <option disabled selected>Choose...</option>
+ 
                                 </select>
                             </div>
 
                             <div class="col-xl-6  col-md-6 mb-4">
                                 <label class="form-label required">Job Type</label>
                                 <select class="default-select wide form-control solid" name="job_type_id" id="job_type"  required>
-                                    <option selected>Choose...</option>
+                                    <option disabled selected>Choose...</option>
                                     
  
                                 </select>
                             </div>
                    
                             <div class="col-xl-6  col-md-6 mb-4">
-                                <label class="form-label required">Select Experience:</label>
-                                <select class="default-select wide form-control solid" name="experience_id" id="experience" required>
-                                    <option selected>Choose...</option>
+                                <label class="form-label required">Select Experience  (optional) :</label>
+                                <select class="default-select wide form-control solid" name="experience_id" id="experience"  >
+                                    <option value="" selected>Choose...</option>
                            
 
                                 </select>
@@ -270,27 +268,27 @@
                             <div class="col-xl-6  col-md-6 mb-4">
                                 <label class="form-label required">Select Gender:</label>
                                 <select class="default-select wide form-control solid" name="gender" id="gender" required>
-                                    <option selected>Choose...</option>
+                                    <option disabled selected>Choose...</option>
                                    
 
                                 </select>
                             </div>
 
                             <div class="col-xl-6  col-md-6 mb-4">
-                                <label class="form-label required">Salary From</label>
-                                <input type="number" class="form-control solid" name="salary_from" placeholder="10,000"
-                                    aria-label="name" id="salary_from" required>
+                                <label class="form-label  ">Salary From  (optional) </label>
+                                <input type="number" class="form-control solid" name="salary_from" placeholder="10,000" 
+                                    aria-label="name" id="salary_from"  >
                             </div>
                             <div class="col-xl-6  col-md-6 mb-4">
-                                <label class="form-label required">Salary To</label>
+                                <label class="form-label  ">Salary To  (optional) </label>
                                 <input type="number"  class="form-control solid" name="salary_to" placeholder="20,000"
-                                    aria-label="name" id="salary_to" required >
+                                    aria-label="name" id="salary_to"   >
                             </div>
 
                             <div class="col-xl-6  col-md-6 mb-4">
-                                <label class="form-label required">Select Currency:</label>
-                                <select name="currency" class="default-select wide form-control solid required" id="currency"  required>
-                                    <option  selected>Choose...</option>
+                                <label class="form-label ">Select Currency  (optional) :</label>
+                                <select name="currency"  class="default-select wide form-control solid  " id="currency"   >
+                                    <option value="" selected>Choose...</option>
  
                                 </select>
                             </div>
@@ -298,7 +296,7 @@
                             <div class="col-xl-6  col-md-6 mb-4">
                                 <label class="form-label required">Location:</label>
                                 <select name="location" class="default-select wide form-control solid required" id="location" required >
-                                    <option  selected>Choose...</option>
+                                    <option disabled selected>Choose...</option>
                                     
                                 </select>
                             </div>                           
@@ -306,7 +304,7 @@
                             <div class="col-xl-6  col-md-6 mb-4">
                                 <label class="form-label required">Country</label>
                                 <select name="country_id" class="default-select wide form-control solid required" required onchange="fetchCities(this.value,1)" id="country">
-                                    <option selected>Choose...</option>
+                                    <option disabled selected>Choose...</option>
                                    
                                 </select>
                             </div>
@@ -315,7 +313,7 @@
                             <div class="col-xl-6  col-md-6 mb-4">
                                 <label class="form-label required">Select City:</label>
                                 <select name="city_id" id="city_update" class="default-select wide form-control solid required" required>
-                                    <option selected>Choose...</option>
+                                    <option disabled selected>Choose...</option>
                                 </select>
                             </div>
                             
@@ -590,7 +588,7 @@
                     $   ('#job_description').val(data.job_description)
                     $('#candidate_profile').val(data.candidate_profile)
  
-                    $('#industry').empty().append('<option selected>Choose...</option>'); // Empty the dropdown first
+                    $('#industry').empty().append('<option disabled selected>Choose...</option>'); // Empty the dropdown first
                     industries_array.forEach(d => {
                         $('#industry').append(`
                             <option ${data.industry_id == d.id ? 'selected' : ''} value="${d.id}">${d.name}</option>      
@@ -598,7 +596,7 @@
                     });
                     $('#industry').selectpicker('refresh');
 
-                    $('#seniority').empty().append('<option selected>Choose...</option>'); // Empty the dropdown first
+                    $('#seniority').empty().append('<option value="" selected>Choose...</option>'); // Empty the dropdown first
                     seniorities_array.forEach(d => {
                         $('#seniority').append(`
                             <option ${data.seniority_id == d.id ? 'selected' : ''} value="${d.id}">${d.name}</option>      
@@ -606,7 +604,7 @@
                     });
                     $('#seniority').selectpicker('refresh');
 
-                    $('#job_type').empty().append('<option selected>Choose...</option>'); // Empty the dropdown first
+                    $('#job_type').empty().append('<option disabled selected>Choose...</option>'); // Empty the dropdown first
                     job_types_array.forEach(d => {
                         $('#job_type').append(`
                             <option ${data.job_type_id == d.id ? 'selected' : ''} value="${d.id}">${d.name}</option>      
@@ -615,7 +613,7 @@
                     $('#job_type').selectpicker('refresh');
  
 
-                    $('#experience').empty().append('<option selected>Choose...</option>'); // Empty the dropdown first
+                    $('#experience').empty().append('<option value="" selected>Choose...</option>'); // Empty the dropdown first
                     job_experiences_array.forEach(d => {
                         $('#experience').append(`
                             <option ${data.experience_id == d.id ? 'selected' : ''} value="${d.id}">${d.name}</option>      
@@ -624,7 +622,7 @@
                     $('#experience').selectpicker('refresh');
   
 
-                    $('#currency').empty().append('<option selected>Choose...</option>'); // Empty the dropdown first
+                    $('#currency').empty().append('<option value="" selected>Choose...</option>'); // Empty the dropdown first
                     countries_array.forEach(d => {
                         $('#currency').append(`
                             <option ${data.currency == d.currency ? 'selected' : ''} value="${d.currency}">${d.currency}</option>      
@@ -633,7 +631,7 @@
                     $('#currency').selectpicker('refresh');
  
 
-                    $('#country').empty().append('<option selected>Choose...</option>'); // Empty the dropdown first
+                    $('#country').empty().append('<option disabled selected>Choose...</option>'); // Empty the dropdown first
                     countries_array.forEach(d => {
                         $('#country').append(`
                             <option ${data.country_id == d.id ? 'selected' : ''} value="${d.id}">${d.name}</option>      
@@ -641,7 +639,7 @@
                     });
                     $('#country').selectpicker('refresh');
 
-                    $('#location').empty().append('<option selected>Choose...</option>'); // Empty the dropdown first
+                    $('#location').empty().append('<option disabled selected>Choose...</option>'); // Empty the dropdown first
                     $('#location').append(`
                         <option value="onsite" ${data.location == 'onsite' ? 'selected' : ''} >Onsite</option>
                         <option value="remote" ${data.location == 'remote' ? 'selected' : ''} >Remote</option>
@@ -650,7 +648,7 @@
                     $('#location').selectpicker('refresh');
  
 
-                    $('#gender').empty().append('<option selected>Choose...</option>'); // Empty the dropdown first
+                    $('#gender').empty().append('<option disabled selected>Choose...</option>'); // Empty the dropdown first
                     $('#gender').append(`
                         <option ${data.gender == 'male' ? 'selected' : ''} value="male">Male</option>
                         <option ${data.gender == 'female' ? 'selected' : ''} value="female">Female</option>
@@ -730,7 +728,7 @@ toggleButtons.forEach(button => {
             url: `/company/get-cities/${countryId}`,
             type: 'GET',
             success: function(response) {
-                citySelect.empty().append('<option selected>Choose...</option>'); // Empty the dropdown first
+                citySelect.empty().append('<option disabled selected>Choose...</option>'); // Empty the dropdown first
                 response.data.forEach(city => {
                     citySelect.append(`<option ${city.id == city_id ? 'selected' : ''} value="${city.id}">${city.name}</option>`);
                 });

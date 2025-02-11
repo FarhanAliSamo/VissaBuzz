@@ -5,25 +5,15 @@
 <!-- Mirrored from jobick.dexignlab.com/laravel/demo/page-register by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 14 Jan 2025 09:51:15 GMT -->
 <!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
 <head>
-    <title>Company Register</title> 
+    <title>VisasBuzz - Company Register</title> 
 
 	<!-- Meta -->
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="author" content="DexignLab">
-	<meta name="robots" content="" >
+ 
     <meta name="csrf-token" content="{{ csrf_token() }}">
-	<meta name="keywords" content="admin dashboard, admin template, analytics, bootstrap, bootstrap 5, bootstrap 5 admin template, job board admin, job portal admin, modern, responsive admin dashboard, sales dashboard, sass, ui kit, web app, frontend">
-	<meta name="description" content="We proudly present Jobick, a Job Admin dashboard HTML Template, If you are hiring a job expert you would like to build a superb website for your Jobick, its a best choice.">
-	<meta property="og:title" content="Jobick : Laravel Job Admin Dashboard Bootstrap 5 Template">
-	<meta property="og:description" content="We proudly present Jobick, a Job Admin dashboard HTML Template, If you are hiring a job expert you would like to build a superb website for your Jobick, its a best choice." >
-	<meta property="og:image" content="../../xhtml/social-image.html">
-	<meta name="format-detection" content="telephone=no">
-
-	<meta name="twitter:title" content="Jobick : Laravel Job Admin Dashboard Bootstrap 5 Template">
-	<meta name="twitter:description" content="We proudly present Jobick, a Job Admin dashboard HTML Template, If you are hiring a job expert you would like to build a superb website for your Jobick, its a best choice.">
-	<meta name="twitter:image" content="../social-image.html">
-	<meta name="twitter:card" content="summary_large_image">
+ 
+ 
     <meta name="viewport" content="width=device-width, initial-scale=1">
 	<!-- Favicon icon -->
 	<link rel="shortcut icon" type="image/png" href="/assets/admin/public/images/favicon.png">

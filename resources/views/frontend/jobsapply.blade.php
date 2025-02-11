@@ -136,14 +136,21 @@
                      <div class="single-candidate-widget-2">
                         <h3>Job overview</h3>
                         <ul class="job-overview">
-                           <li>
-                              <h4><i class="fa fa-briefcase"></i> Offerd Salary</h4>
-                              <p>{{$data->currency}} {{$data->salary_from}} - {{$data->currency}} {{$data->salary_to}}</p>
-                           </li>
-                           <li>
-                              <h4><i class="fa fa-map-marker"></i> Location</h4>
-                              <p>{{$data->city->name}}, {{$data->country->name}}</p>
-                           </li>
+                           
+                           @if($data->salary_from && $data->salary_to)
+                              <li>
+                                 <h4><i class="fa fa-briefcase"></i> Offerd Salary</h4>
+                                 <p>{{$data->currency}} {{$data->salary_from}} - {{$data->currency}} {{$data->salary_to}}</p>
+                              </li>
+                           @endif
+
+                           @if($data->country && $data?->country->name)
+                              <li>
+                                 <h4><i class="fa fa-map-marker"></i> Location</h4>
+                                 <p>{{$data->city->name}}, {{$data->country->name}}</p>
+                              </li>
+                           @endif
+
                            <li>
                               <h4><i class="fa fa-thumb-tack"></i> Job Type</h4>
                               <p>{{$data->jobType->name}}</p>
@@ -154,21 +161,24 @@
                               <p>{{$data->location}}</p>
                            </li>
 
-                           <li>
-                              <h4><i class="fa fa-thumb-tack"></i>Seniority</h4>
-                              <p>{{$data->seniority->name}}</p>
-                           </li>
+                           @if($data->seniority && $data?->seniority->name)
+                              <li>
+                                 <h4><i class="fa fa-thumb-tack"></i>Seniority</h4>
+                                 <p>{{$data->seniority->name}}</p>
+                              </li>
+                           @endif
 
                            <li>
                               <h4><i class="fa fa-thumb-tack"></i>Industry</h4>
                               <p>{{$data->industry->name}}</p>
                            </li>
 
-
-                           <li>
-                              <h4><i class="fa fa-thumb-tack"></i>Experience</h4>
-                              <p>{{$data->experience->name}}</p>
-                           </li>
+                           @if($data->experience && $data?->experience->name)
+                              <li>
+                                 <h4><i class="fa fa-thumb-tack"></i>Experience</h4>
+                                 <p>{{$data->experience->name}}</p>
+                              </li>
+                           @endif
 
                            <li>
                               <h4><i class="fa fa-clock-o"></i> Date Posted</h4>

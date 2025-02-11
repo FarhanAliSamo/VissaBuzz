@@ -5,25 +5,15 @@
 <!-- Mirrored from jobick.dexignlab.com/laravel/demo/page-register by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 14 Jan 2025 09:51:15 GMT -->
 <!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
 <head>
-    <title>Company Login</title> 
+    <title>VisasBuzz - Company Login</title> 
 
 	<!-- Meta -->
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="author" content="DexignLab">
-	<meta name="robots" content="" >
+ 
     <meta name="csrf-token" content="{{ csrf_token() }}">
-	<meta name="keywords" content="admin dashboard, admin template, analytics, bootstrap, bootstrap 5, bootstrap 5 admin template, job board admin, job portal admin, modern, responsive admin dashboard, sales dashboard, sass, ui kit, web app, frontend">
-	<meta name="description" content="We proudly present Jobick, a Job Admin dashboard HTML Template, If you are hiring a job expert you would like to build a superb website for your Jobick, its a best choice.">
-	<meta property="og:title" content="Jobick : Laravel Job Admin Dashboard Bootstrap 5 Template">
-	<meta property="og:description" content="We proudly present Jobick, a Job Admin dashboard HTML Template, If you are hiring a job expert you would like to build a superb website for your Jobick, its a best choice." >
-	<meta property="og:image" content="../../xhtml/social-image.html">
-	<meta name="format-detection" content="telephone=no">
-
-	<meta name="twitter:title" content="Jobick : Laravel Job Admin Dashboard Bootstrap 5 Template">
-	<meta name="twitter:description" content="We proudly present Jobick, a Job Admin dashboard HTML Template, If you are hiring a job expert you would like to build a superb website for your Jobick, its a best choice.">
-	<meta name="twitter:image" content="../social-image.html">
-	<meta name="twitter:card" content="summary_large_image">
+ 
+	 
     <meta name="viewport" content="width=device-width, initial-scale=1">
 	<!-- Favicon icon -->
 	<link rel="shortcut icon" type="image/png" href="/assets/admin/public/images/favicon.png">
@@ -41,7 +31,7 @@
             <div class="text-center mb-3">
                 <a href="index-2.html"><img class="logo-auth" src="/assets/admin/images/logo-full.png" alt=""></a>
             </div>
-            <h4 class="text-center mb-4">Sign up your account</h4>
+            <h4 class="text-center mb-4">Login to your account</h4>
             
             <form method="POST" action="{{ route('company.login') }}" onsubmit="showLoader()">
                 @csrf
@@ -75,7 +65,7 @@
                 </div>
             </form>
             <div class="new-account mt-3">
-                <p>Already have an account? <a class="text-primary" href="{{route('company.register')}}">Sign in</a></p>
+                <p>Don't have an account? <a class="text-primary" href="{{route('company.register')}}">Sign Up</a></p>
             </div>
         </div>
     </div>
