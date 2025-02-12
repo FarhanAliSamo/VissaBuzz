@@ -298,7 +298,7 @@
                 let updateId = $('#updateId').val()
 
                 $.ajax({
-                    url: `{{ url('admin/`/${updateId}') }}`, // Your route URL
+                    url: `{{ url('admin/`${updateId}') }}`, 
                     type: "POST",
                     data: formData,
                     success: function(response) {

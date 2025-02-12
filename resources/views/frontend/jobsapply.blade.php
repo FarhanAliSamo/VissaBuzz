@@ -20,7 +20,8 @@
                      </div>
                      <div class="single-candidate-box-right">
                         <h4>{{ $data->job_title }}</h4>
-                        <img src="/assets/frontend/img/pl.svg" alt="region" />
+                         
+                        {{-- <img src="/assets/frontend/img/pl.svg" alt="region" /> --}}
                         <p>{{$data->industry->name}}</p>
                         <div class="job-details-meta">
                            {{-- <p><i class="fa fa-file-text"></i> Applications 1</p> --}}

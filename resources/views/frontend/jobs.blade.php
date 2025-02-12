@@ -270,19 +270,29 @@
                         </div>
 
 
-                        <!-- end job sidebar list -->
-                        {{-- <div class="pagination-box-row">
-                            <p>Page 1 of 6</p>
-                            <ul class="pagination">
-                                <li class="active"><a href="#">1</a></li>
-                                <li><a href="#">2</a></li>
-                                <li><a href="#">3</a></li>
-                                <li>...</li>
-                                <li><a href="#">6</a></li>
-                                <li><a href="#"><i class="fa fa-angle-double-right"></i></a></li>
-                            </ul>
-                        </div> --}}
-                        <!-- end pagination -->
+                       <!-- Pagination -->
+<div class="pagination-box-row">
+    <p>Page {{ $jobs->currentPage() }} of {{ $jobs->lastPage() }}</p>
+    <ul class="pagination">
+        @if($jobs->onFirstPage())
+            <li class="disabled"><span><i class="fa fa-angle-double-left"></i></span></li>
+        @else
+            <li><a href="{{ $jobs->previousPageUrl() }}"><i class="fa fa-angle-double-left"></i></a></li>
+        @endif
+
+        @for($i = 1; $i <= $jobs->lastPage(); $i++)
+            <li class="{{ ($jobs->currentPage() == $i) ? 'active' : '' }}">
+                <a href="{{ $jobs->url($i) }}">{{ $i }}</a>
+            </li>
+        @endfor
+
+        @if($jobs->hasMorePages())
+            <li><a href="{{ $jobs->nextPageUrl() }}"><i class="fa fa-angle-double-right"></i></a></li>
+        @else
+            <li class="disabled"><span><i class="fa fa-angle-double-right"></i></span></li>
+        @endif
+    </ul>
+</div>
 
                     </div>
                 </div>

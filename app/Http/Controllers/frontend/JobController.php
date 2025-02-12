@@ -9,11 +9,11 @@ use App\Models\Job;
 class JobController extends Controller
 {
     public function index(){
-        $jobs = Job::with(['seniority', 'industry', 'jobType', 'experience', 'country', 'city'])->get();
+        $jobs = Job::with(['seniority', 'industry', 'jobType', 'experience', 'country', 'city'])->paginate(10);
         
-        // dd($jobs);
-        return view('frontend.jobs',compact('jobs'));
+        return view('frontend.jobs', compact('jobs'));
     }
+    
     public function show($id){
         $data = Job::with(['seniority', 'industry', 'jobType', 'experience', 'country', 'city'])->find($id);
         // dd($data);

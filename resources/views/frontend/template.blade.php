@@ -141,7 +141,7 @@
                                  <ul>
                                     <li><a href="browse-candidates.html">Browse Candidates</a></li>
                                     <li><a href="single-company.html">company details</a></li>
-                                    <li><a href="post-job.html">Post A job</a></li>
+                                    <li><a href="{{route('company.jobs.index')}}">Post A job</a></li>
                                     <li class="has-inner-child">
                                        <a href="#">employer dashboard</a>
                                        <ul>
@@ -179,7 +179,10 @@
                   <div class="col-lg-4">
                      <div class="header-right-menu">
                         <ul>
-                           <li><a href="post-job.html" class="post-jobs">Post jobs</a></li>
+                           @if (Auth::guard('company')->check())
+                              <li><a href="{{route('company.jobs.index')}}" class="post-jobs">Post jobs</a></li>"
+                           @endif
+
                            <li><a href="register.html"><i class="fa fa-user"></i>sign up</a></li>
                            <li><a href="login.html"><i class="fa fa-lock"></i>login</a></li>
                         </ul>

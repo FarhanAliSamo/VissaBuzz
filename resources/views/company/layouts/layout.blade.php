@@ -57,7 +57,7 @@
             Nav header start
         ***********************************-->
         <div class="nav-header">
-            <a href="index-2.html" class="brand-logo">
+            <a href="{{route('front.home')}}" class="brand-logo">
                 {{-- <svg class="logo-abbr" xmlns="http://www.w3.org/2000/svg" width="62.074" height="65.771"
                     viewBox="0 0 62.074 65.771">
                     <g id="search_11_" data-name="search (11)" transform="translate(12.731 12.199)">
