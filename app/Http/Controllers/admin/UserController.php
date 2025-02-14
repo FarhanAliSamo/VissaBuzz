@@ -59,7 +59,7 @@ class UserController extends Controller
                 'required',
                 'string',
                 'min:4',
-                'max:20'
+                'max:50'
             ],
             'roles' => [
                 'required',
@@ -114,10 +114,10 @@ class UserController extends Controller
                 'max:50'
             ],
             'password' => [
-                'required',
+                'nullable',
                 'string',
                 'min:4',
-                'max:20'
+                'max:50'
             ],
             'roles' => [
                 'required',
@@ -152,6 +152,7 @@ class UserController extends Controller
 
     public function destroy($id)
     {
+        
         $user = User::find($id);
         $user->delete();
 

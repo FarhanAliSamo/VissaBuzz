@@ -143,10 +143,10 @@
                             </div>
 
                             <div class="col-12">
-                                <label class="form-label required">Password</label>
+                                <label class="form-label  ">Password</label>
                                 <div class="input-group">
                                     <input type="password" name="password" id="password" class="form-control solid password-field"  placeholder="Password" 
-                                           aria-label="password" required>
+                                           aria-label="password"  >
                                     <button type="button" class="btn btn-primary toggle-password" >
                                         <i class="fas fa-eye"></i> <!-- Font Awesome Icon -->
                                     </button>
@@ -298,7 +298,7 @@
                 let updateId = $('#updateId').val()
 
                 $.ajax({
-                    url: `{{ url('admin/`${updateId}') }}`, 
+                    url: `{{ url('admin/users/${updateId}') }}`, // Your route URL
                     type: "POST",
                     data: formData,
                     success: function(response) {

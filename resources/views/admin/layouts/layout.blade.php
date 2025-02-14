@@ -60,7 +60,7 @@
             Nav header start
         ***********************************-->
         <div class="nav-header">
-            <a href="{{route('front.home')}}" class="brand-logo">
+            <a href="/admin" class="brand-logo">
                 {{-- <svg class="logo-abbr" xmlns="http://www.w3.org/2000/svg" width="62.074" height="65.771"
                     viewBox="0 0 62.074 65.771">
                     <g id="search_11_" data-name="search (11)" transform="translate(12.731 12.199)">
@@ -255,7 +255,7 @@
                                         </svg>
                                         <span class="ms-2">Inbox </span>
                                     </a>
-                                    <a  href="javascript:void(0);" onclick="companyLogout();" class="dropdown-item ai-icon">
+                                    <a  href="javascript:void(0);" onclick="logout();" class="dropdown-item ai-icon">
                                         <svg xmlns="http://www.w3.org/2000/svg" class="text-danger" width="18"
                                             height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                             stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -314,7 +314,7 @@
                             </svg>
                             <span class="ms-2">Inbox </span>
                         </a>
-                        <a  href="javascript:void(0);" onclick="companyLogout();" class="dropdown-item ai-icon">
+                        <a  href="javascript:void(0);" onclick="logout();" class="dropdown-item ai-icon">
                             <svg xmlns="http://www.w3.org/2000/svg" class="text-danger" width="18"
                                 height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                 stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -398,7 +398,7 @@
         <!--**********************************
             Content body end
         ***********************************-->
-        <form id="company-logout-form" action="{{ route('company.logout') }}" method="POST" style="display: none;">
+        <form id="company-logout-form" action="{{ route('admin.logout') }}" method="POST" style="display: none;">
             @csrf
         </form>
 
@@ -588,7 +588,7 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <script>
-        function companyLogout() {
+        function logout() {
         event.preventDefault();
         document.getElementById('company-logout-form').submit();
     }

@@ -12,6 +12,9 @@ class CompanyAuthController extends Controller
 {
     public function showLoginForm()
     {
+        // if (Auth::guard('company')->check()) {
+        //     return redirect('company/dashbaord');
+        // }
         return view('company.auth.login');
     }
     

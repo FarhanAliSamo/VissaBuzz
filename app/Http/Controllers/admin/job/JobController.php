@@ -21,7 +21,10 @@ use Illuminate\Support\Facades\Auth;
 class JobController extends Controller
 {
  
-
+ public function __construct() {
+    $this->middleware("auth");
+    $this->middleware("permission:create-admin",['only' => ["index"]]);
+}
     public function index()
     {
         // $company_id = Auth::guard('company')->id();
