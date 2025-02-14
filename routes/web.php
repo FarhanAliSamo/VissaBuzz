@@ -29,8 +29,9 @@ Route::name('front.')->group(function () {
     Route::get('jobs/apply/{id}', [FrontJobController::class, 'show'])->name('jobs.show');
 });
 
+// ->middleware("auth")
 // Admin Routes
-Route::prefix('admin')->name('admin.')->middleware("auth")->group(function () {
+Route::prefix('admin')->name('admin.')->group(function () {
     Route::get('/', function () {
         return view('admin.dashboard.dashboard');
     })->name('dashboard');
